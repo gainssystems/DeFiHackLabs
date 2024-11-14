@@ -14,9 +14,7 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xc748673057861a797275cd8a068abb95a902e8de#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1662744426475831298
-// Hacking God : https://www.google.com/
 
 interface IFarm {
     function depositOnBehalf(uint256 amount, address account) external;
@@ -57,7 +55,7 @@ contract ContractTest is Test {
         assets[0] = address(WBNB);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 80_000 * 1e18;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         Radiant.flashLoan(address(this), assets, amounts, modes, address(0), new bytes(0), 0);
 

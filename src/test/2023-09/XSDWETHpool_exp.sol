@@ -14,30 +14,36 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://bscscan.com/address/0xfadda925e10d07430f5d7461689fd90d3d81bb48#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/CertiKAlert/status/1706765042916450781
-// Hacking God : https://www.google.com/
 // invoke function burnpoolXSD() after executing TransferHelper.safeTransferETH();
 
 interface IXSD is IERC20 {
-    function burnpoolXSD(uint256 _xsdamount) external;
+    function burnpoolXSD(
+        uint256 _xsdamount
+    ) external;
 }
 
 interface IXSDRouter {
     function swapXSDForETH(uint256 amountOut, uint256 amountInMax) external;
-    function swapETHForBankX(uint256 amountOut) external payable;
+    function swapETHForBankX(
+        uint256 amountOut
+    ) external payable;
 }
 
 interface IXSDWETHpool {
     function PERMIT_TYPEHASH() external pure returns (bytes32);
-    function nonces(address owner) external view returns (uint256);
+    function nonces(
+        address owner
+    ) external view returns (uint256);
     function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast);
     function price0CumulativeLast() external view returns (uint256);
     function price1CumulativeLast() external view returns (uint256);
     function kLast() external view returns (uint256);
     function collatDollarBalance() external returns (uint256);
     function swap(uint256 amount0Out, uint256 amount1Out, address to) external;
-    function skim(address to) external;
+    function skim(
+        address to
+    ) external;
     function sync() external;
 }
 

